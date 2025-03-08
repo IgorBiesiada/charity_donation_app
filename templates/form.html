@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Przekaż dary{% endblock %}
+
+{% block content %}
+<header class="header--form-page">
+  <div class="slogan container container--90">
+    <h1>Oddaj rzeczy, których już nie chcesz<br />
+      <span class="uppercase">potrzebującym</span>
+    </h1>
+  </div>
+</header>
+
+<section class="form--steps">
+  <form method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+      <label>Co chcesz oddać?</label>
+      <input type="text" name="items" placeholder="Np. ubrania, książki">
+    </div>
+    <div class="form-group">
+      <label>Adres odbioru:</label>
+      <input type="text" name="address" placeholder="Ulica, nr domu">
+      <input type="text" name="city" placeholder="Miasto">
+      <input type="text" name="zip_code" placeholder="Kod pocztowy">
+      <input type="text" name="phone" placeholder="Numer telefonu">
+    </div>
+    <div class="form-group form-group--buttons">
+      <button type="submit" class="btn">Przekaż dary</button>
+    </div>
+  </form>
+</section>
+{% endblock %}
