@@ -1,22 +1,47 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}PortfolioLab{% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<title>Document</title>
+
+  
+    {% block styles %}
+        <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+    {% endblock %}
+    
+    {% block scripts %}
+        <script src="{% static 'js/app.js' %}"></script>
+    {% endblock %}
 </head>
 <body>
 
-{% include 'partials/header.html' %}
+{% block header %}
+    {% include "partials/header.html" %}
+{% endblock%}
 
-<main>
-    {% block content %}{% endblock %}
-</main>
+{% block stats%}
+    {% include 'partials/statsContainer.html'%}
+{% endblock %}
 
-{% include 'partials/footer.html' %}
+{% block steps %}
+    {% include 'partials/stepsContainer.html' %}
+{% endblock %}
 
-<script src="{% static 'js/app.js' %}"></script>
+{% block aboutus%}
+    {% include 'partials/aboutUs.html' %}
+{% endblock %}
+
+{% block help %}
+    {% include 'partials/help.html' %}
+{% endblock %}
+
+{% block login %}{% endblock %}
+
+{% block footer %}
+    {% include 'partials/footer.html' %}
+{% endblock %}
 </body>
-</html>
