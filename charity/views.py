@@ -1,9 +1,19 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
+from charity.models import Donation, Institution
+
 # Create your views here.
 
 class LandingPageView(TemplateView):
     template_name = 'landingPage.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context['count_donation'] = Donation.objects.count()
+        context['count_institution'] = Institution.objects.count()
+
+        return context
 
 class AddDonationView(TemplateView):
     template_name = 'addDonation.html'
