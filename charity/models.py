@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-
+from django.db.models import Sum
 # Create your models here.
 
 class Category(models.Model):
@@ -37,6 +37,11 @@ class Donation(models.Model):
     pick_up_time = models.TimeField()
     pick_up_comment = models.TextField(blank=True, null=True)
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+    
+    @classmethod
+    def count_bags(cls):
+        result = cls.objects.aggregate(total_bags=Sum('quantity'))
+        return result['total_bags']
     
     def __str__(self):
         return f'{self.quantity} -- {self.institution.name}'
