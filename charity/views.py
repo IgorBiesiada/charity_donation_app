@@ -12,7 +12,7 @@ class LandingPageView(TemplateView):
 
         context['count_donation'] = Donation.count_bags()
         context['count_institution'] = Institution.objects.count()
-
+        
         return context
 
 class AddDonationView(TemplateView):

@@ -10,11 +10,12 @@ class Category(models.Model):
         return self.name
 
 class Institution(models.Model):
-    INSTITUTION_TYPES = (
-        ('fundacja', 'Fundacja'),
-        ('organizacja pozarządowa', 'Organizacja pozarządowa'),
-        ('zbiórka lokalna', 'Zbiórka lokalna')
-    )
+
+    INSTITUTION_TYPES = [
+        ("fundacja" , 'Fundacja'),
+        ("organizacja", 'Organizacja pozarządowa'),
+        ("zbiorka" , 'Zbiórka lokalna')
+    ]
     
     
     name = models.CharField(max_length=50)
