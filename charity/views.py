@@ -17,10 +17,6 @@ class LandingPageView(TemplateView):
         context['organizacja'] = Institution.objects.filter(type="organizajca")
         context['zbiorka'] = Institution.objects.filter(type="zbiorka")
 
-
-
-
-
         return context
 
 class AddDonationView(TemplateView):
