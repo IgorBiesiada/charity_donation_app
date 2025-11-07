@@ -12,9 +12,9 @@ class Category(models.Model):
 class Institution(models.Model):
 
     INSTITUTION_TYPES = [
-        ("fundacja" , 'Fundacja'),
-        ("organizacja", 'Organizacja pozarządowa'),
-        ("zbiorka" , 'Zbiórka lokalna')
+        ("fundacja" , 'fundacja'),
+        ("organizacja", 'organizacja'),
+        ("zbiorka" , 'zbiorka')
     ]
     
     

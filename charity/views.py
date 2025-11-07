@@ -5,7 +5,7 @@ from django.core.paginator import Paginator
 # Create your views here.
 
 class LandingPageView(TemplateView):
-    template_name = 'landingPage.html'
+    template_name = 'base.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -14,7 +14,7 @@ class LandingPageView(TemplateView):
         context['count_institution'] = Institution.objects.count()
         
         context['fundacja'] = Institution.objects.filter(type="fundacja")
-        context['organizacja'] = Institution.objects.filter(type="organizajca")
+        context['organizacja'] = Institution.objects.filter(type="organizacja")
         context['zbiorka'] = Institution.objects.filter(type="zbiorka")
 
         return context
