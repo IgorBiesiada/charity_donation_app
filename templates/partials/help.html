@@ -33,11 +33,14 @@
 
         
         <ul class="help--slides-pagination">
-          <li><a href="#" class="btn btn--small btn--without-border active" data-page="1">1</a></li>
-          <li><a href="#" class="btn btn--small btn--without-border" data-page="2">2</a></li>
-          <li><a href="#" class="btn btn--small btn--without-border" data-page="3">3</a></li>
+          {% for num in fundacja.paginator.page_range %}
+          <li><a href="?fun_page={{ num }}&org_page={{ organizacja.number }}&zbi_page={{ zbiorka.number }}#help" 
+            class="btn btn--small btn--without-border {% if fundacja.number == num %}active{% endif %}" data-page="1">
+              {{ num }}
+          </a>
+          </li>
+          {% endfor %}
         </ul>
-        
       </div>
 
 
