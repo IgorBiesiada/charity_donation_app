@@ -1,23 +1,30 @@
-from django.shortcuts import render
 from django.views.generic import TemplateView
 from charity.models import Donation, Institution
 from django.core.paginator import Paginator
+from django.shortcuts import render
 # Create your views here.
 
-class LandingPageView(TemplateView):
-    template_name = 'base.html'
+def landing_page(request):
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
+    count_donation = Donation.count_bags()
+    count_institution = Institution.objects.count()
+    
+    fundacja = Institution.objects.filter(type="fundacja")
+    organizacja = Institution.objects.filter(type="organizacja")
+    zbiorka = Institution.objects.filter(type="zbiorka")
+    
+    fundacja_paginator = Paginator(fundacja, 5)
+    
+    
+    context = { 'count_donation': count_donation,
+                'count_institution': count_institution,
+                'fundacja': fundacja,
+                'organizacja': organizacja, 
+                'zbiorka': zbiorka
+               }
+    
+    return render(request, 'base.html', context)
 
-        context['count_donation'] = Donation.count_bags()
-        context['count_institution'] = Institution.objects.count()
-        
-        context['fundacja'] = Institution.objects.filter(type="fundacja")
-        context['organizacja'] = Institution.objects.filter(type="organizacja")
-        context['zbiorka'] = Institution.objects.filter(type="zbiorka")
-
-        return context
 
 class AddDonationView(TemplateView):
     template_name = 'addDonation.html'
